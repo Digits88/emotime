@@ -38,7 +38,16 @@ add_library(emotime SHARED  facedetector/FaceDetector.cpp
                             gaborbank/GaborKernel.h
                             utils/matrix_io.cpp
                             utils/string_utils.cpp
-                                                  )
+			    gui/ACapture.cpp
+			    gui/ACapture.h
+			    gui/AGui.cpp
+			    gui/AGui.h
+           		    gui/EmotimeGui.cpp
+           		    gui/EmotimeGui.h
+               		    gui/emotimegui_cli.cpp
+			    gui/VideoCapture.cpp
+			    gui/VideoCapture.h
+			    gui/WebcamCapture.h)
 
 target_link_libraries(emotime ${OpenCV_LIBS})
 
@@ -47,6 +56,6 @@ INSTALL(TARGETS emotime DESTINATION ${ASSETDIR})
 INSTALL(FILES facedetector/FaceDetector.h
                utils/matrix_io.h utils/string_utils.h
                gaborbank/GaborBank.h gaborbank/GaborKernel.h
-               detector/EmoDetector.h detector/BoostEmoDetector.h detector/SVMEmoDetector.h detector/FacePreProcessor.h 
+               detector/EmoDetector.h detector/BoostEmoDetector.h detector/SVMEmoDetector.h detector/FacePreProcessor.h gui/ACapture.h gui/AGui.h gui/EmotimeGui.h gui/VideoCapture.h gui/WebcamCapture.h
        DESTINATION "${HEADERDIR}")
 
