@@ -87,6 +87,7 @@ namespace emotime {
       cvD->load(clpath);
 
       string fname = matrix_io_fileBaseName(clpath);
+      // std::cout<<"the file locations starts at: "<<std::endl; 
       Emotion emo = UNKNOWN;
 
       vector<string> emotions_list = split_string(fname, "_");

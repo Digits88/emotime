@@ -46,13 +46,14 @@ namespace emotime {
   FacePreProcessor::~FacePreProcessor() {
 
   }
+  
 
   bool FacePreProcessor::preprocess(Mat& img, Mat& featvec) {
     Mat face, filtered, fvec;
-    bool res;
-    res = this->extractFace(img, face);
+    bool res=true;
+    //res = this->extractFace(img, face);
     if (res) {
-      res = this->filterImage(face, filtered);
+      res = this->filterImage(img, filtered);
       if (res) {
         res = this->toFeaturesVector(filtered, featvec);
       }
