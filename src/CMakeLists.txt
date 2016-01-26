@@ -3,7 +3,15 @@ IF (MSVC)
   # Setting the xecutables as console applications
   SET (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:CONSOLE")
 ENDIF (MSVC)
+# uninstall target
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake_uninstall.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+    IMMEDIATE @ONLY)
 
+add_custom_target(uninstall
+    COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
+#end of uninstall
 include_directories(${SRCDIR}/training)
 include_directories(${SRCDIR}/facedetector)
 include_directories(${SRCDIR}/gaborbank)
@@ -51,11 +59,12 @@ add_library(emotime SHARED  facedetector/FaceDetector.cpp
 
 target_link_libraries(emotime ${OpenCV_LIBS})
 
-INSTALL(TARGETS emotime DESTINATION ${ASSETDIR})
+INSTALL(TARGETS emotime DESTINATION lib)
 
 INSTALL(FILES facedetector/FaceDetector.h
                utils/matrix_io.h utils/string_utils.h
                gaborbank/GaborBank.h gaborbank/GaborKernel.h
                detector/EmoDetector.h detector/BoostEmoDetector.h detector/SVMEmoDetector.h detector/FacePreProcessor.h gui/ACapture.h gui/AGui.h gui/EmotimeGui.h gui/VideoCapture.h gui/WebcamCapture.h
-       DESTINATION "${HEADERDIR}")
+               training/Classifier.h training/SVMClassifier.h training/AdaBoostClassifier.h training/TrainingParameters.h 
+       DESTINATION include)
 

@@ -11,4 +11,4 @@ FIND_PACKAGE(OpenCV COMPONENTS opencv_core opencv_ml opencv_contrib
 
 TARGET_LINK_LIBRARIES(train_cli ${OpenCV_LIBS})
 
-INSTALL(TARGETS train_cli DESTINATION ${ASSETDIR})
+INSTALL(TARGETS train_cli DESTINATION lib)
